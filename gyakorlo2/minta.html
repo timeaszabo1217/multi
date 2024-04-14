@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2. zh</title>
+</head>
+<body>
+<canvas id="game" width="600" height="600"></canvas>
+<script>
+    var c = document.getElementById("game");
+    var ctx = c.getContext("2d");
+
+    INTERVALID = null;
+
+    var wormImg;
+    var planeImg;
+    var planeX = c.width;
+    var planeY = 50;
+    var wormY = 460;
+    var wormX = 300;
+    var wormW = 60;
+    var wormH = 60;
+    var wormStep = 20;
+    var planeW;
+    var planeH;
+    var bombList = [];
+
+    wormImg = new Image();
+    wormImg.src = "cat123.png";
+
+    wormImg2 = new Image();
+    wormImg2.src = "cat1234.png";
+
+    isWormStateDefault = true;
+
+    planeImg = new Image();
+    planeImg.src = "plane.png";
+
+    planeImg.onload = function() {
+        planeW = planeImg.width;
+        planeH = planeImg.height;
+
+        INTERVALID = setInterval(animate, 20);
+    };
+
+    function animate() {
+        requestAnimationFrame(draw);
+    }
+
+    function stop(){
+        clearInterval(INTERVALID);
+    }
+
+    function draw() {
+        drawPlane();
+        drawWorm();
+        drawWormByState(isWormStateDefault);
+        dropBomb();
+        drawBombs();
+        removeBombs();
+    }
+
+    function drawPlane() {
+        drawBackground();
+        ctx.drawImage(planeImg, planeX, planeY, planeW / 4, planeH / 4);
+        planeX -= 3;
+        if (planeX < 0 - planeW / 4) {
+            planeX = 600;
+        }
+    }
+
+    function drawBackground() {
+        ctx.fillStyle = "#a087eb";
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.fillStyle = "#455740";
+        ctx.fillRect(0, 500, c.width, 100);
+    }
+
+    function drawWorm() {
+        // ctx.drawImage(wormImg, wormX, wormY, wormW, wormH);
+        // ctx.drawImage(wormImg2, wormX, wormY, wormW, wormH);
+    }
+
+    function drawWormByState(state) {
+        if (state){
+            ctx.drawImage(wormImg, wormX, wormY, wormW, wormH);
+        }
+        else{
+            ctx.drawImage(wormImg2, wormX, wormY, wormW, wormH);
+        }
+    }
+
+    function dropBomb() {
+        if (Math.random() > 0.985) {
+            bombList.push({x: planeX + 30, y: planeY + 60});
+        }
+    }
+
+    function removeBombs() {
+        if (bombList.length > 0 && bombList[0].y > 500) {
+            drawExplosion(bombList[0].x, bombList[0].y);
+            bombList.shift();
+        }
+        var activeBombs = [];
+        for (var i = 0; i < bombList.length; i++) {
+            if (bombList[i].y < 550) {
+                activeBombs.push(bombList[i]);
+            }
+            if(bombList[i].y > 460) {
+                var dist = Math.abs((bombList[i].x + 10) - (wormX + 25));
+                if (dist < 20) {
+                    stop();
+                }
+            }
+        }
+        bombList = activeBombs;
+    }
+
+    function drawExplosion(x,y){
+        ctx.fillStyle = "#6750a1";
+        ctx.beginPath();
+        ctx.arc(x, y, 20, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+
+    function drawBombs() {
+        for (var i in bombList) {
+            var bomb = bombList[i];
+            ctx.fillStyle = "#2d4126";
+            ctx.beginPath();
+            ctx.arc(bomb.x, bomb.y, 10, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillRect(bomb.x - 10, bomb.y - 20, 20, 20);
+            bomb.y += 6;
+        }
+    }
+
+    function wormMove(e) {
+        var key = e.which;
+        if (key === 39) {
+            if (wormX < c.width - wormW - wormStep) {
+                wormX += wormStep;
+            }
+        } else if (key === 37) {
+            if (wormX > wormStep) {
+                wormX -= wormStep;
+            }
+        }
+    }
+    window.addEventListener('keydown', wormMove, false);
+
+    function wormMouseMove(ev) {
+        var rect = c.getBoundingClientRect();
+        var mouseX = ev.clientX - rect.left - wormStep;
+        if (mouseX > 0 && mouseX < c.width - wormW) {
+            wormX = mouseX;
+        }
+    }
+    c.addEventListener('mousemove', wormMouseMove, false);
+
+    function wormStateMouseClick(ev) {
+        console.log('clicked');
+        var rect = c.getBoundingClientRect();
+        if(2 === ev.detail){
+            isWormStateDefault = !isWormStateDefault;
+        }
+    }
+    c.addEventListener('click', wormStateMouseClick, false);
+</script>
+</body>
+</html>

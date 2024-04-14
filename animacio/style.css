@@ -1,0 +1,52 @@
+:root {
+    --pixel-size: 5;
+}
+
+body {
+    background: #000000;
+}
+
+.Background {
+    width: 700px;
+    position: center;
+}
+
+.Character {
+    width: calc(80px * var(--pixel-size));
+    height: calc(100px * var(--pixel-size));
+    overflow: hidden;
+    position: relative;
+    margin: 5em auto;
+    padding: 0;
+    left: -75px;
+}
+
+.Character_spritesheet {
+    animation: moveSpritesheet 0.5s steps(2) infinite;
+    width: calc(130px * var(--pixel-size));
+    position: absolute;
+    left: 80px;
+}
+.Character_shadow {
+    position: absolute;
+    width: calc(85px * var(--pixel-size));
+    height: calc(100px * var(--pixel-size));
+}
+
+.pixelart {
+    image-rendering: pixelated;
+}
+
+.face {
+    top: calc(50px * var(--pixel-size));
+}
+
+
+@keyframes moveSpritesheet {
+    from {
+        transform: translate3d(0px,0,0)
+    }
+    to {
+        transform: translate3d(-100%,0,0)
+    }
+}

@@ -1,0 +1,70 @@
+* {
+    font-size: 20px;
+    font-family: Lucida Console, sans-serif;
+}
+body {
+    background-color: rebeccapurple;
+}
+
+#app {
+    width: 800px;
+    margin: auto;
+    background-color: beige;
+    border: 2px solid ;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#description {
+    text-align: justify;
+}
+
+#game {
+    width: 600px;
+    margin-left: 100px;
+    margin-top: 20px;
+    position: relative;
+    border: 2px solid ;
+    border-radius: 10px;
+}
+
+#bg {
+    background-color: #a087eb;
+    height: 400px;
+    position: relative;
+    border-radius: 10px;
+}
+
+#field {
+    background-color: beige;
+    height: 80px;
+    position: relative;
+    top: 320px;
+}
+
+#cat {
+    height: 60px;
+    position: absolute;
+    top: 260px;
+    left: 300px;
+}
+
+#buttons {
+
+}
+
+.button {
+    display: inline-block;
+    align-content: center;
+    color: beige;
+    background-color: rebeccapurple;
+    padding: 8px;
+    border: 2px solid;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #a087eb;
+}

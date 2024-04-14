@@ -1,0 +1,23 @@
+#gamearea {
+    width: 600px;
+    height: 600px;
+    border: 2px lightslategray solid;
+    margin: 0 auto;
+    position: relative;
+    background-image: url('bg.jpeg');
+}
+
+.enemy {
+    position: absolute;
+}
+
+#defender {
+    position: absolute;
+}
+
+#score_tab {
+    color: mintcream;
+    position: relative;
+    left: 500px;
+    top: 20px;
+}

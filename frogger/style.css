@@ -1,0 +1,29 @@
+body {
+    background-color: burlywood;
+}
+
+#game_area {
+    margin: 0 auto;
+    border: 10px solid;
+    position: relative;
+    width: 800px;
+    height: 800px;
+    background-color: forestgreen;
+}
+#wintext {
+    font-size: 350px;
+    font-weight: bolder;
+    color: firebrick;
+    top: 150px;
+    left: 150px;
+    position: absolute;
+}
+
+#road {
+    width: 800px;
+    height: 50px;
+}
+
+.car_l, .car_r {
+    height: 50px;
+}
