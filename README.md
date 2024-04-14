@@ -1,2 +1,10 @@
-# multi
-𝔐𝔲𝔩𝔱𝔦𝔪𝔢𝔡𝔦𝔞 𝔭𝔯𝔬𝔧𝔢𝔨𝔱𝔪𝔲𝔫𝔨𝔞
+# Multimédia
+
+A félév feladatai, melyek JQuery-ben készültek és főleg cicák szerepelnek benne.
+
+```plaintext
+                  へ.🎀
+              （ . ˕ .  )
+                  |、⁻〵
+                 じしˍ,)ノ 
+```
