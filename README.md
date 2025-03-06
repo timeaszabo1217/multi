@@ -1,6 +1,6 @@
 # Multimédia
 
-Jelen projekt során elsajátítottam a multimédiás webfejlesztés alapjait, beleértve az HTML5, CSS3 és JavaScript használatát, különös figyelmet fordítva a jQuery integrálására animációk, effektek, valamint interaktív elemek létrehozásában. Ezen kívül megismerkedtem a CANVAS rajzolással, eseménykezeléssel, és a hang- és videóelemek weboldalon történő alkalmazásával.
+A beadandók során elsajátítottam a multimédiás webfejlesztés alapjait, beleértve az HTML5, CSS3 és JavaScript használatát, különös figyelmet fordítva a jQuery integrálására animációk, effektek, valamint interaktív elemek létrehozásában. Ezen kívül megismerkedtem a CANVAS rajzolással, eseménykezeléssel, és a hang- és videóelemek weboldalon történő alkalmazásával.
 
 ## Feladat Szöveges Leírása
 
